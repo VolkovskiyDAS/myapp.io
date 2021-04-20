@@ -1,0 +1,64 @@
+@media (max-width: 1315px) {
+	.books img {
+		width: 95%;
+	}
+}
+
+@media (max-width: 1200px) {
+.container {
+    max-width: 970px;
+}
+
+}
+@media (max-width: 992px) {
+.container {
+    max-width: 750px;
+}
+
+}
+
+@media (max-width: 768px) {
+.container {
+    max-width: none;
+}
+
+}
+
+@media (max-width: 745px) {
+	.books {
+		display: inline-block;
+	}
+	.books img {
+		width: 70%;
+	}
+}
+
+
+@media (max-width: 500px) {
+	.books img {
+		width: 90%;
+	}
+}
+
+@media (max-width: 326px) {
+	#sd {
+		display: none;
+	}
+	.men {
+		display: inline-block;
+	}
+	.block2 {
+		width: 90%;
+	}
+	.butten {
+		width: 100%;
+	}
+}
+
+@media (max-width: 191px) {
+	.butten {
+		font-size: 60%;
+	}
+
+}
+

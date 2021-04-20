@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0,width=device-width" />
+        <title>EZGDZ — ???</title>
+        <link rel="shortcut icon" href="img/logo.png" type="image/png">
+
+    </head>
+<body id="bodys">
+<style type="text/css">
+    body {
+  height: 100vh;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial;
+  transition: 0.5s ease;
+}
+body.wrong {
+  animation: bg-red 1s ease-in;
+}
+body.correct {
+  animation: bg-green 1s ease-in;
+}
+#inspiration {
+  position: fixed;
+  right: 1em;
+  bottom: 1em;
+}
+#inspiration a {
+  display: inline-block;
+  float: left;
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  transition: all 1s ease;
+}
+#inspiration a:hover {
+  color: #212121;
+}
+#inspiration p {
+  margin: 0;
+  padding-left: 0.4em;
+  display: inline-block;
+  float: right;
+  color: rgba(255, 255, 255, 0.6);
+}
+#pin {
+  background: #fff;
+  width: 20em;
+  display: flex;
+  min-width: 246px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1em;
+  border-radius: 0.3em;
+  margin: auto;
+  color: rgba(255, 255, 255, 0.2);
+  transition: 0.5s ease;
+}
+.dots {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  padding: 1em;
+  padding-top: 2em;
+}
+.dot {
+  position: relative;
+  background: #000;
+  border-radius: 0.8em;
+  width: 0.8em;
+  height: 0.8em;
+  transform: scale3d(0.7, 0.7, 0.7);
+}
+.dot.active {
+  animation: growDot 0.5s ease;
+  animation-fill-mode: forwards;
+  background: green;
+}
+.dot.wrong {
+  animation: wrong 0.9s ease;
+}
+.dot.correct {
+  animation: correct 0.9s ease;
+}
+#pin p {
+  font-size: 0.8em;
+  color: #000;
+}
+.numbers {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
+  align-content: flex-end;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.number {
+  width: 2.5em;
+  height: 2.5em;
+  margin: 0.5em;
+  border-radius: 2.5em;
+  text-align: center;
+  line-height: 2.7em;
+  font-weight: 500;
+  font-size: 1.8em;
+  user-select: none;
+  color: #000;
+  transition: all 0.5s ease;
+}
+.number:hover {
+	background: #cccccc5e;
+	cursor: pointer;
+  color: #000;
+}
+
+.number:before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 2.5em;
+  transition: all 0.5s ease;
+}
+
+@keyframes growDot {
+  100% {
+    background: green;
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+}
+
+@keyframes wrong {
+  20% {
+    background: crimson;
+  }
+  40% {
+    transform: translate(-15px, 0);
+  }
+  60% {
+    transform: translate(10px, 0);
+  }
+  80% {
+    transform: translate(-5px, 0);
+  }
+}
+@keyframes correct {
+  20% {
+    background: limegreen;
+  }
+  40% {
+    transform: translate(0, -15px);
+  }
+  60% {
+    transform: translate(0, 10px);
+  }
+  80% {
+    transform: translate(0, -5px);
+  }
+}
+@keyframes bg-red {
+  50% {
+    background: crimson;
+  }
+}
+@keyframes bg-green {
+  50% {
+    background: limegreen;
+  }
+}
+@media(max-width: 372px) {
+    #pin {
+        width: 100%;
+        margin: 0px auto;
+    }
+    .number {
+        font-size: 1.5em;
+        line-height: 2.7em;
+    }
+}
+
+@media(max-width: 314px) {
+    .number {
+        font-size: 1.3em;
+        line-height: 2.9em;
+    }
+}
+
+@media(max-width: 278px) {
+    .number {
+        font-size: 1.1em;
+        line-height: 2.9em;
+    }
+}
+@keyframes donut-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.donut {
+  display: inline-block;
+  border: 2.5px solid #fff;
+  border-left-color: #0d6efd;
+  border-right-color: #0d6efd;
+  border-top-color: #0d6efd;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  animation: donut-spin .7s linear infinite;
+}
+.read {
+	z-index: 10000;
+	position: fixed;
+	width: 40em;
+	height: 500px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%) scale(0);
+	display: none;
+	opacity: 0;
+	transition: 0.5s ease;
+}
+</style>
+<img src="https://cdn.dribbble.com/users/870130/screenshots/2295446/check-in.gif" class="read" id="ok">
+<div id="pin">
+	<p>Введите пароль</p>
+    <div class="dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    <div class="numbers">
+        <div class="number" id="1">1</div>
+        <div class="number" id="2">2</div>
+        <div class="number" id="3">3</div>
+        <div class="number" id="4">4</div>
+        <div class="number" id="5">5</div>
+        <div class="number" id="6">6</div>
+        <div class="number" id="7">7</div>
+        <div class="number" id="8">8</div>
+        <div class="number" id="9">9</div>
+    </div>
+<div id="vh" style="transition: 0.5s ease; text-align: center; display: none;">
+     <p style="margin-top: 0px; letter-spacing: 1px; color: green; opacity: .8; transition: 0.5s ease;">Вход успешно выполнен</p>
+     <div class="donut"></div>
+ </div>
+</div>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    (function() {
+    var input   = '',
+        correct = '4561';
+    
+    var dots    = document.getElementsByClassName('dot'), 
+        numbers = document.getElementsByClassName('number');
+        dots    = Array.from(dots);
+        numbers = Array.from(numbers);
+    
+    var numbersBox = document.getElementsByClassName('numbers')[0];
+    $(numbersBox).on('click', '.number', function(evt) {
+        var number = $( this );
+        
+        number.addClass( 'grow' );
+        input += ( number.index()+1 );
+        $( dots[input.length-1] ).addClass( 'active' );
+        
+        if( input.length >= 4 ) {
+            if( input !== correct ) {
+                dots.forEach( (dot) => $(dot).addClass( 'wrong' ) );
+            }
+            else {
+                dots.forEach( (dot) => $(dot).addClass( 'correct' ) );
+                document.getElementById('ok').style.display = 'block'
+                setTimeout(function() {
+                	document.getElementById('bodys').style.background = '#242424'
+                	document.getElementById('pin').style.opacity = '0'
+                }, 300);
+                setTimeout(function() {
+                	document.getElementById('ok').style.opacity = '1'
+                	document.getElementById('ok').style.transform = 'translate(-50%,-50%) scale(1)'
+                }, 600);
+                setTimeout(function() {
+                	document.getElementById('pin').style.display = 'none'
+                }, 700);
+                setTimeout(function() {
+                	location.href = 'indexsis.html'
+                }, 3300);
+
+            }
+            setTimeout(function() {
+                dots.forEach( (dot) => dot.className = 'dot' );
+                input = '';
+            }, 900);
+            setTimeout(function() {
+                document.body.className = '';
+            }, 1000);
+        }
+        setTimeout(function() {
+            number.className = 'number';
+        }, 1000);
+    });
+})();
+
+	function m() {
+		document.addEventListener ('keydown', function (event){
+    document.getElementById('1').click()
+	}); 
+	var evt = new KeyboardEvent('keydown', {'keyCode':49, 'which':49});
+	document.dispatchEvent(evt);
+	}
+
+	window.onload = function() {
+		console.log('Страница Загружена')
+	}
+
+</script>
+</body>
+</html>
